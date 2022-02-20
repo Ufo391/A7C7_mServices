@@ -13,10 +13,15 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MassTransit" Version="7.3.1"/>
-		<PackageReference Include="MassTransit.AspNetCore" Version="7.3.1"/>
-		<PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1"/>
-		<PackageReference Include="MassTransit.AspNetCore" Version="6.2.3"/>
+		<PackageReference Include="MassTransit" Version="7.3.1" />
+		<PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+		<PackageReference Include="MassTransit.RabbitMQ" Version="7.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Shared.MassTransit.RabbitMq\Shared.RabbitMq.csproj" />
+	  <ProjectReference Include="..\Shared.Refit\Shared.Refit.csproj" />
+	  <ProjectReference Include="..\TestUserService.Sdk\TestUserService.Sdk.csproj" />
 	</ItemGroup>
 
 </Project>

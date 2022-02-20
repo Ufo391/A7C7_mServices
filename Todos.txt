@@ -1,0 +1,3 @@
+Mit Projektvorlage abgleichen
+EF Core zum laufen bringen --> Migration
+Senden/Empfangen von Nachrichten testen
