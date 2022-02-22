@@ -1,6 +1,6 @@
 ﻿using Refit;
 
-namespace TestUserService.Sdk
+namespace TestTwoAPI.Sdk
 {
     public interface ITestUserService
     {

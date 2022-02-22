@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestUserService.Sdk.Events
+namespace TestTwoAPI.Sdk.Events
 {
     public interface UserDeletionFailed
     {

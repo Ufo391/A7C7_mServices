@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestUserService.Sdk.Dtos
+namespace TestTwoAPI.Sdk.Dtos
 {
     [Serializable]
     public class User

@@ -2,16 +2,18 @@ using MassTransit;
 using Shared.Refit;
 using System.Reflection;
 using Shared.RabbitMq;
-using TestUserService.Sdk;
+using TestTwoAPI.Sdk;
 using Refit;
+using TestOneAPI.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<ConnectionStringsOptions>(
+    builder.Configuration.GetSection(ConnectionStringsOptions.ConnectionStrings));
 
 builder.Services.AddMassTransit(x =>
 {

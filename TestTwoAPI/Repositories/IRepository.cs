@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace TestUserService.Repositories
+namespace TestTwoAPI.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

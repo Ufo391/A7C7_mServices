@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestUserService.Sdk.Commands
+namespace TestTwoAPI.Sdk.Commands
 {
     public interface DeleteUser
     {

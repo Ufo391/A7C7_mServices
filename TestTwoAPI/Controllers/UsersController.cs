@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using TestUserService.Models;
-using TestUserService.Models.Extensions;
-using TestUserService.Repositories;
+using TestTwoAPI.Models;
+using TestTwoAPI.Models.Extensions;
+using TestTwoAPI.Repositories;
 
 namespace TestTwoAPI.Controllers
 {
@@ -17,7 +17,7 @@ namespace TestTwoAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TestUserService.Sdk.Dtos.User>> Get([FromRoute] Guid id)
+        public async Task<ActionResult<Sdk.Dtos.User>> Get([FromRoute] Guid id)
         {
             var user = await userRepository.GetAsync(id);
 
@@ -30,7 +30,7 @@ namespace TestTwoAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TestUserService.Sdk.Dtos.User>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Sdk.Dtos.User>>> GetAll()
         {
             var users = await userRepository.GetAllAsync();
 

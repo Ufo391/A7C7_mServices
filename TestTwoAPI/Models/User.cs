@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TestUserService.Models
+namespace TestTwoAPI.Models
 {
     public class User
     {

@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shared.MassTransit.RabbitMq\Shared.RabbitMq.csproj" />
+    <ProjectReference Include="..\TestOneAPI\TestOneAPI.csproj" />
     <ProjectReference Include="..\TestUserService.Sdk\TestUserService.Sdk.csproj" />
   </ItemGroup>
 

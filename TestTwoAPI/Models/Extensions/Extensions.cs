@@ -1,7 +1,7 @@
 ﻿using MassTransit;
-using TestUserService.Sdk.Commands;
+using TestTwoAPI.Sdk.Commands;
 
-namespace TestUserService.Models.Extensions
+namespace TestTwoAPI.Models.Extensions
 {
     public static class Extensions
     {

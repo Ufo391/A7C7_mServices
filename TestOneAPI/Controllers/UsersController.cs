@@ -1,8 +1,8 @@
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
-using TestUserService.Sdk;
-using TestUserService.Sdk.Commands;
-using TestUserService.Sdk.Dtos;
+using TestTwoAPI.Sdk;
+using TestTwoAPI.Sdk.Commands;
+using TestTwoAPI.Sdk.Dtos;
 
 namespace TestOneAPI.Controllers
 {

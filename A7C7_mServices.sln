@@ -23,11 +23,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOneAPI", "TestOneAPI\Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTwoAPI", "TestTwoAPI\TestTwoAPI.csproj", "{5EFE908C-A356-464E-B0F2-04E3438D9DA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.RabbitMq", "Shared.MassTransit.RabbitMq\Shared.RabbitMq.csproj", "{C2E6AA59-C660-426C-A2A0-2F95A2FD4390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.RabbitMq", "Shared.MassTransit.RabbitMq\Shared.RabbitMq.csproj", "{C2E6AA59-C660-426C-A2A0-2F95A2FD4390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Refit", "Shared.Refit\Shared.Refit.csproj", "{E5589A7B-17A2-49FF-A4A6-272EE7F1503E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Refit", "Shared.Refit\Shared.Refit.csproj", "{E5589A7B-17A2-49FF-A4A6-272EE7F1503E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUserService.Sdk", "TestUserService.Sdk\TestUserService.Sdk.csproj", "{18CF8271-DC40-424E-B4BF-D8623EAEC24C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUserService.Sdk", "TestUserService.Sdk\TestUserService.Sdk.csproj", "{18CF8271-DC40-424E-B4BF-D8623EAEC24C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6CCC59D5-B52A-42E8-BAE3-4BBD3A68421C}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-infrastructure.yml = docker-compose-infrastructure.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

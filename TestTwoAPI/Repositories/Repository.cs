@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using TestUserService.Models;
+using TestTwoAPI.Models;
 
-namespace TestUserService.Repositories
+namespace TestTwoAPI.Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
