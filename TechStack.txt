@@ -1,0 +1,53 @@
+Signal R - Echtzeitkommunikation mit Frontend WebSockets
+	Hubs sind zum subscriben da
+Refit - Abstraktion von Controller für HTTP Kommunikation
+	
+MassTransit - AMQTP RabbitMQ Protokoll 
+
+Sdk ist SharedPackage --> kann man als eigene Repo in GitHub sehen also Microservice Unterprojekt
+	Gibt gebündelt direkt mit was man benötigt um den Microservice zu verwenden
+		DTOS (für Refit), RabbitMQ Commands & Events
+		Datenschreiben immer mit async mit RabbitMQ
+			Wg Performance
+			Entkopplung
+		Datenlesen immer sync mit Refit
+
+TestPackages als Hilfspaket für neue Unterprojekte
+	ICommand ist zur besseren Nachvollziehbarkeit bei Errors in Logs
+
+
+GatewayAPI
+	CreateUser ---> Async --> gibt vor abschluss des Erstellprozesses eine GUID ID für den erzeugten Command im MessageBroker zurück
+
+RabbitMQ schafft pro sekunde 30.000 Nachrichten
+	Man kann mehrere parallelschalten aber jede weitere instanz schafft nur weitere 15.000 Nachrichten
+
+WICHTIG Commands von Events trennen
+Command Event Pattern
+	Unterpattern von PubSub
+
+Projekt läuft nach Domain Driven Design
+
+CQRS --> lesen mit HTTP & schreiben mit RabbitMQ Protokoll
+	ermöglicht relationales Datenmodell zum schreiben
+		und MongoDB zum lesen durchs feuern von Events sync sich mongo db mit relationaler DB
+		mongodb lesen geht schneller als von relational somit performance boost
+		nur möglich duch die anwendung von CQRS
+		Man kann Redis DB nutzen als quasi Cache
+
+Kubernetes für Ausfallsicherheit
+	So wie es jetzt schon im Testprojekt implementiert ist kann man die Microservices rendundant laufen lassen es reagiert eh nur einer darauf und es wird nicht doppelt verarbeitet (bei Strategie z.B.)
+
+Error Logs wo?
+	in RabbitMQ selbst
+	Grafana als eigene Logging Applikation
+	Kann man in Kubernetes nachvollzihene
+	Im Boilerplate ist der Default Konsolen Logger erstmal drin
+Gemeinsame Objekte/Klassen wie verwalten?
+	Beispiel Tick, ApfelStrategie, BirnenStrategie --> gemeinsame Klasse Tickdatenstruktur --> Tickdatenstruktur in Tick.Sdk auslagern und von Strategien darauf referezienren
+
+CommandID : kann rausfinden ob User schon erstellt wurde oder noch dabei ist
+CorrelationId: failed Commands: Man referenziert auf vorhergegangene CommandIds um z.B. bei Errors zu verstehen welcher Command schuld war
+
+Das verheiraten von Pub Sub läuft via Black Magic via Reflection
+	Im Gateway gibts die Consumer in Events und durch das einsetzen vom Interface z.B. in UserCreatedConsumer erkennt MassTransit via Reflection den Handler
