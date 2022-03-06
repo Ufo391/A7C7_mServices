@@ -1,7 +1,20 @@
-# Use root/example as user/password credentials
-version: '3.1'
+version: "3.5"
 
 services:
+
+#  mssql:
+    #image: "mcr.microsoft.com/mssql/server:2017-latest"
+    #container_name: "mssql"
+    #environment:
+      #SA_PASSWORD: "Test_Password123"
+      #ACCEPT_EULA: "Y"
+    #ports:
+      #- "1433:1433"
+    #restart: always
+    #networks:
+      #- infrastructure
+    #volumes:
+      #- "../volumes/mssql:/var/opt/mssql/data"
 
   db:
     image: mysql
@@ -14,15 +27,14 @@ services:
     networks:
       - infrastructure
 
-
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-
-
+  # redis:
+  #   image: redis
+  #   container_name: "redis"
+  #   ports:
+  #     - "6379:6379"
+  #   restart: always
+  #   networks:
+  #     - infrastructure
 
   rabbitmq:
     image: "rabbitmq:3.8-management"
@@ -38,8 +50,6 @@ services:
       - "5672:5672"
     networks:
       - infrastructure
-
-
 
 networks:
   infrastructure:
