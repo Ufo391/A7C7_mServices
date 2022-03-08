@@ -30,9 +30,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTodoService", "src\Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTodoService.Sdk", "src\TestTodoService\TestTodoService.Sdk\TestTodoService.Sdk.csproj", "{23BC5F8B-449C-48D5-B442-781FF5AD0895}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPackages.MassTransit", "src\TestPackages\TestPackages.MassTransit\TestPackages.MassTransit.csproj", "{5C98FA34-0913-4875-AD3F-7099B1C1C053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPackages.MassTransit", "src\TestPackages\TestPackages.MassTransit\TestPackages.MassTransit.csproj", "{5C98FA34-0913-4875-AD3F-7099B1C1C053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPackages.Messages", "src\TestPackages\TestPackages.Messages\TestPackages.Messages.csproj", "{D1A19853-631D-40F1-88D3-2AE6EB311174}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestPackages.Messages", "src\TestPackages\TestPackages.Messages\TestPackages.Messages.csproj", "{D1A19853-631D-40F1-88D3-2AE6EB311174}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommunicationApi", "CommunicationApi", "{6B6BC1A8-6323-46F9-8D20-35814B19BA6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationApi", "CommunicationApi\CommunicationApi.csproj", "{BD620F18-F0B6-41C4-8A29-D64271DBB2CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +80,10 @@ Global
 		{D1A19853-631D-40F1-88D3-2AE6EB311174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1A19853-631D-40F1-88D3-2AE6EB311174}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1A19853-631D-40F1-88D3-2AE6EB311174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD620F18-F0B6-41C4-8A29-D64271DBB2CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD620F18-F0B6-41C4-8A29-D64271DBB2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD620F18-F0B6-41C4-8A29-D64271DBB2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD620F18-F0B6-41C4-8A29-D64271DBB2CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +98,7 @@ Global
 		{23BC5F8B-449C-48D5-B442-781FF5AD0895} = {7F7D55D8-EDA3-49BF-B520-E00A99A306EE}
 		{5C98FA34-0913-4875-AD3F-7099B1C1C053} = {1FF41731-2793-41DC-83FF-807704562D5F}
 		{D1A19853-631D-40F1-88D3-2AE6EB311174} = {1FF41731-2793-41DC-83FF-807704562D5F}
+		{BD620F18-F0B6-41C4-8A29-D64271DBB2CB} = {6B6BC1A8-6323-46F9-8D20-35814B19BA6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B17D50A-D117-4AFB-AD82-5C64993289FC}
