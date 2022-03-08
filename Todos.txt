@@ -1,3 +1,1 @@
-Mit Projektvorlage abgleichen
-EF Core zum laufen bringen --> Migration
-Senden/Empfangen von Nachrichten testen
+Aerial weiter --> Tick(Abstract machen mit Ableitung für MetaTrader) in SharedLibrary anpassen

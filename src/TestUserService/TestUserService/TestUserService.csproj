@@ -18,8 +18,6 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TestPackages\TestPackages.MassTransit.RabbitMq\TestPackages.MassTransit.RabbitMq.csproj" />
-    <ProjectReference Include="..\..\TestPackages\TestPackages.MassTransit\TestPackages.MassTransit.csproj" />
     <ProjectReference Include="..\TestUserService.Sdk\TestUserService.Sdk.csproj" />
   </ItemGroup>
 

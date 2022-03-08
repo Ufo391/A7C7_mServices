@@ -11,8 +11,4 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\TestPackages\TestPackages.Messages\TestPackages.Messages.csproj" />
-  </ItemGroup>
-
 </Project>

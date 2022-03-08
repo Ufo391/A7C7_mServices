@@ -21,8 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TestPackages\TestPackages.MassTransit.RabbitMq\TestPackages.MassTransit.RabbitMq.csproj" />
-    <ProjectReference Include="..\..\TestPackages\TestPackages.MassTransit\TestPackages.MassTransit.csproj" />
     <ProjectReference Include="..\..\TestTodoService\TestTodoService.Sdk\TestTodoService.Sdk.csproj" />
     <ProjectReference Include="..\..\TestUserService\TestUserService.Sdk\TestUserService.Sdk.csproj" />
   </ItemGroup>
