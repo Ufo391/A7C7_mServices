@@ -1,10 +1,8 @@
-﻿using Communication.FastProtocol.Read;
-using ExpertAdvisors.Abstract;
-using Microsoft.AspNetCore.Http;
+﻿using CommunicationApi.Adapters.Abstract;
 using System.Net;
 using System.Net.Sockets;
 
-namespace ExpertAdvisors._03_Security
+namespace CommunicationApi.Adapters.Implementation.Security
 {
     public class Se_MetaTrader : AbstractSecurity
     {

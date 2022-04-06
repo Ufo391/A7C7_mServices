@@ -1,7 +1,6 @@
-﻿using ExpertAdvisors.Model.Orders;
-using Microsoft.AspNetCore.Http;
-using System;
-using static ExpertAdvisors.Model.Orders.AbstractOrder;
+﻿using CommunicationApi.Exceptions;
+using TestPackages.Bookkeepings;
+using static TestPackages.Bookkeepings.AbstractOrder;
 
 namespace CommunicationApi.Adapters.Abstract
 {
@@ -9,19 +8,19 @@ namespace CommunicationApi.Adapters.Abstract
     {
         // Attribute
         protected Action<string> OnTick = delegate { };
-        protected AbstractAerial _receiveTransmit;
+        protected AbstractAerial _aerial;
         public AbstractAerial ReceiveTransmit
         {
             get
             {
-                return _receiveTransmit;
+                return _aerial;
             }
             set
             {
-                if (_receiveTransmit == null)
+                if (_aerial == null)
                 {
-                    _receiveTransmit = value;
-                    _receiveTransmit.AddEventHandlerOnTick(OnTickHandler);
+                    _aerial = value;
+                    _aerial.AddEventHandlerOnTick(OnTickHandler);
                 }
                 else
                 {
@@ -50,7 +49,7 @@ namespace CommunicationApi.Adapters.Abstract
         {
             OnTick += meth;
         }
-        public AbstractOrder OpenOrder(DIRECTION direction, double volume, double openPrice)
+        public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
         {
             var token = SecurityStrategy();
             return ReceiveTransmit.OpenOrder(direction, volume, openPrice, token);
@@ -64,38 +63,6 @@ namespace CommunicationApi.Adapters.Abstract
         {
             var token = SecurityStrategy();
             return ReceiveTransmit.OrderStatus(order, token);
-        }
-    }
-
-    // Exception Klasse
-
-    public class SecurityException : Exception
-    {
-        public enum ERROR_CODE
-        {
-            SECURITY_VALIDATION_FAILED
-        }
-
-        public ERROR_CODE ErrorCode { get; private set; }
-
-        public SecurityException(ERROR_CODE code) : base()
-        {
-            ErrorCode = code;
-        }
-
-        public SecurityException(ERROR_CODE code, string message) : base(message)
-        {
-            ErrorCode = code;
-        }
-
-        public SecurityException(ERROR_CODE code, string message, Exception inner) : base(message, inner)
-        {
-            ErrorCode = code;
-        }
-
-        public override string ToString()
-        {
-            return $"[{Enum.GetName(typeof(ERROR_CODE), ErrorCode)}]: {Message}";
         }
     }
 }

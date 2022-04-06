@@ -1,19 +1,18 @@
-﻿using Communication.FastProtocol.Read;
-using ExpertAdvisors.Abstract;
+﻿using CommunicationApi.Adapters.Abstract;
+using TestPackages.Utils.Charts;
 
-namespace ExpertAdvisors._02_Reliability
+namespace CommunicationApi.Adapters.Implementation.Reliability
 {
     public class Re_MetaTrader : AbstractReliability
     {
-        // Konstruktor
-        public Re_MetaTrader(string tickRegexPattern) : base(tickRegexPattern)
-        {
-
-        }
-
         protected override bool ReliabilityStrategy()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        protected override AbstractTick StringTickToDerivateConversion(string tick)
+        {
+            throw new NotImplementedException();
         }
     }
 }
