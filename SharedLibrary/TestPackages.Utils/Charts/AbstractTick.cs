@@ -54,27 +54,22 @@ namespace TestPackages.Utils.Charts
         public DateTime TimeStamp { get; private set; }
 
         // Konstruktor
-        public AbstractTick(Match matchData)
+        public AbstractTick(string tick)
         {
             TimeStamp = DateTime.Now;
-            Data = matchData;
+            Data = ValidateTick(tick, GetTickValidationRegex());
             EAId = Guid.Parse(Data.Groups[(int)ENUM_OBJ_INDEX.GUID].Value);
-
-            if (MapTickFlags.ContainsKey((ENUM_METATRADER_TICK_FLAG)Enum.ToObject(typeof(ENUM_METATRADER_TICK_FLAG), FlagCode)) == false)
-            {
-                throw new TickException(TickException.ERROR_CODE.FLAG_CODE_NOT_EXISTS);
-            }
         }
 
         // Methoden        
         public override bool Equals(object obj)
         {
-            if (obj is Tick == false)
+            if (obj is AbstractTick == false)
             {
                 return false;
             }
 
-            var instance = (Tick)obj;
+            var instance = (AbstractTick)obj;
             return instance.TimeStamp.Equals(TimeStamp) && instance.GetDataHashCode() == GetDataHashCode();
         }
 
@@ -101,6 +96,9 @@ namespace TestPackages.Utils.Charts
                 _EAId = value;
             }
         }
+
+        public abstract Regex GetTickValidationRegex();
+        public abstract Match ValidateTick(string tick, Regex regex);
 
         // GET
         public string Symbol
