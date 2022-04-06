@@ -10,7 +10,7 @@ namespace CommunicationApi.Adapters.Implementation.Aerial
         // Konstruktor
         public Ae_MetaTrader() { }
 
-        internal override AbstractOrder CloseOrder(AbstractOrder order, string token)
+        internal override AbstractOrder CloseOrder(AbstractOrder order, object token)
         {
             throw new NotImplementedException();
         }
@@ -20,12 +20,12 @@ namespace CommunicationApi.Adapters.Implementation.Aerial
             throw new NotImplementedException();
         }
 
-        internal override AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, string token)
+        internal override AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token)
         {
             throw new NotImplementedException();
         }
 
-        internal override AbstractOrder OrderStatus(AbstractOrder order, string token)
+        internal override AbstractOrder OrderStatus(AbstractOrder order, object token)
         {
             throw new NotImplementedException();
         }

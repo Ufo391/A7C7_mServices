@@ -9,19 +9,19 @@ namespace CommunicationApi.Adapters.Abstract
     {
         // Attribute              
         protected Action<AbstractTick> OnTick = delegate { };        
-        protected AbstractSecurity _security; 
+        private AbstractSecurity security; 
         public AbstractSecurity Security
         {
             get
             {
-                return _security;                
+                return security;                
             }
-            set
+            internal set
             {
-                if(_security == null)
+                if(security == null)
                 {
-                    _security = value;
-                    _security.AddEventHandlerOnTick(OnTickHandler);
+                    security = value;
+                    security.AddEventHandlerOnTick(OnTickHandler);
                 }
                 else
                 {
@@ -33,19 +33,20 @@ namespace CommunicationApi.Adapters.Abstract
         // Abstrakt
         abstract protected bool ReliabilityStrategy(); // StrategyPattern
         abstract protected AbstractTick StringTickToDerivateConversion(string tick);
+        
         // Hilfsmethoden
-        protected void OnTickHandler(string tick)
+        private void OnTickHandler(string tick)
         {
             OnTick(StringTickToDerivateConversion(tick));
         }
 
         // Methoden
-        public void AddEventHandlerOnTick(Action<AbstractTick> meth)
+        internal void AddEventHandlerOnTick(Action<AbstractTick> meth)
         {
             OnTick += meth;
         }
 
-        public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
+        internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -59,7 +60,7 @@ namespace CommunicationApi.Adapters.Abstract
             }
         }
 
-        public AbstractOrder CloseOrder(AbstractOrder order)
+        internal AbstractOrder CloseOrder(AbstractOrder order)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -69,9 +70,9 @@ namespace CommunicationApi.Adapters.Abstract
             {
                 throw new ReliabilityException(ReliabilityException.ERROR_CODE.EXECUTING_FAILED);
             }
-        }      
-        
-        public AbstractOrder OrderStatus(AbstractOrder order)
+        }
+
+        internal AbstractOrder OrderStatus(AbstractOrder order)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -81,6 +82,18 @@ namespace CommunicationApi.Adapters.Abstract
             {
                 throw new ReliabilityException(ReliabilityException.ERROR_CODE.EXECUTING_FAILED);
             }
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AbstractReliability reliability &&
+                   EqualityComparer<Action<AbstractTick>>.Default.Equals(OnTick, reliability.OnTick) &&
+                   EqualityComparer<AbstractSecurity>.Default.Equals(security, reliability.security);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(OnTick, security);
         }
     }
 }

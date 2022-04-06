@@ -16,8 +16,4 @@
     <ProjectReference Include="..\SharedLibrary\TestPackages.Utils\TestPackages.Utils.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

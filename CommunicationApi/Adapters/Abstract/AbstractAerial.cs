@@ -10,13 +10,24 @@ namespace CommunicationApi.Adapters.Abstract
         protected Action<string, HttpContext> OnTick = delegate { };
         
         abstract internal ExpertAdvisorStateType EAStatusRequest();
-        abstract internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, string token);
-        abstract internal AbstractOrder CloseOrder(AbstractOrder order, string token);
-        abstract internal AbstractOrder OrderStatus(AbstractOrder order, string token);
+        abstract internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token);
+        abstract internal AbstractOrder CloseOrder(AbstractOrder order, object token);
+        abstract internal AbstractOrder OrderStatus(AbstractOrder order, object token);
 
         internal void AddEventHandlerOnTick(Action<string, HttpContext> meth)
         {
             OnTick += meth;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is AbstractAerial aerial &&
+                   EqualityComparer<Action<string, HttpContext>>.Default.Equals(OnTick, aerial.OnTick);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(OnTick);
         }
     }
 }
