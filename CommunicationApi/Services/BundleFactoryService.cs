@@ -20,17 +20,16 @@ namespace CommunicationApi.Services
         }
 
         /// <inheritdoc/>
+        public void ChangeBundleState(Guid bundleId, ExpertAdvisorStateType state)
+        {
+            Bundles[bundleId].State = state;
+        }
+
+        /// <inheritdoc/>
         public IEnumerable<Bundle> GetAllRunningBundles()
         {
             foreach (var bundle in Bundles)
                 yield return bundle.Value;
-        }
-
-        /// <inheritdoc/>
-        public IEnumerable<string> GetAllRunningBundlesAsString()
-        {
-            foreach (var bundle in Bundles)
-                yield return bundle.Value.ToString();
         }
 
         /// <inheritdoc/>

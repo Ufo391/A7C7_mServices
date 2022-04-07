@@ -4,8 +4,8 @@ using CommunicationApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommunicationApi.Controllers
-{
-    [Route("com/bundles")]
+{    
+    [ApiController]
     public class BundleController : Controller
     {
         private readonly IBundleFactoryService bundleFactoryService;
@@ -15,13 +15,20 @@ namespace CommunicationApi.Controllers
             this.bundleFactoryService = bundleFactoryService;
         }
 
-        [HttpGet]
+        [HttpGet("com/[controller]/[action]")]
         public ActionResult<IEnumerable<string>> GetAllInstances()
         {
-            return Ok(bundleFactoryService.GetAllRunningBundlesAsString());
+            try
+            {
+                return Ok(bundleFactoryService.GetAllRunningBundles().Select(x => x.ToString()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPost]
+        [HttpPost("com/[controller]/[action]")]
         public ActionResult<Guid> InstanceBundle([FromBody] InstanceBundleDto dto)
         {
             try
@@ -37,6 +44,20 @@ namespace CommunicationApi.Controllers
                             throw new NotImplementedException("Unknown bundle type!");
                         }
                 }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPost("com/[controller]/[action]")]
+        public ActionResult ChangeBundleState([FromBody] ChangeBundleStateDto dto)
+        {
+            try
+            {
+                bundleFactoryService.ChangeBundleState(dto.BundleId, dto.NewState);
+                return Ok();
             }
             catch (Exception ex)
             {

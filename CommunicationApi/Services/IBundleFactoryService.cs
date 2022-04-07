@@ -9,8 +9,6 @@ namespace CommunicationApi.Services
 
         /// <summary>
         /// Instantiates a MetaTrader instance.
-        /// </summary>
-        /// <param name="headId"></param>
         /// <returns></returns>
         public Guid InstanceMetaTraderBundle(Guid headId, ExpertAdvisorStateType initState);
 
@@ -19,12 +17,6 @@ namespace CommunicationApi.Services
         /// </summary>
         /// <returns></returns>
         public IEnumerable<Bundle> GetAllRunningBundles();
-        
-        /// <summary>
-        /// Returns all running instances of bundles.
-        /// </summary>
-        /// <returns></returns>
-        public IEnumerable<string> GetAllRunningBundlesAsString();
 
         /// <summary>
         /// Get Bundle by Id.
@@ -32,5 +24,12 @@ namespace CommunicationApi.Services
         /// <param name="bundleId"></param>
         /// <returns></returns>
         public Bundle GetBundle(Guid bundleId);
+
+        /// <summary>
+        /// Changes the state of a bundle.
+        /// </summary>
+        /// <param name="bundleId"></param>
+        /// <param name="state"></param>
+        public void ChangeBundleState(Guid bundleId, ExpertAdvisorStateType state);
     }
 }

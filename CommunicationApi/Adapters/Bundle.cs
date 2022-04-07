@@ -12,7 +12,7 @@ namespace CommunicationApi.Adapters
         private readonly AbstractAerial Aerial;
         private readonly AbstractSecurity Security;
         private readonly AbstractReliability Reliability;
-        private readonly ExpertAdvisorStateType State;
+        public ExpertAdvisorStateType State { get; set; }
 
         // Constructor
         public Bundle(BundleTypes type, Guid headId, ExpertAdvisorStateType initialState, AbstractAerial aerial,AbstractSecurity security, AbstractReliability reliability)
@@ -27,10 +27,6 @@ namespace CommunicationApi.Adapters
             Id = Guid.NewGuid();
             State = initialState;
         }
-
-
-        // Methods
-
 
         // Helping functions
         public override string ToString()
