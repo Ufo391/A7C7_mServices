@@ -46,26 +46,26 @@ namespace CommunicationApi.Adapters.Abstract
                 throw new SecurityException(SecurityException.ERROR_CODE.SECURITY_VALIDATION_FAILED, "Unauthorisierter Zugriff");
             }
         }
-        internal void AddEventHandlerOnTick(Action<string> meth)
+        public void AddEventHandlerOnTick(Action<string> meth)
         {
             OnTick += meth;
         }
-        internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
+        public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
         {
             var token = SecurityStrategy();
             return Aerial.OpenOrder(direction, volume, openPrice, token);
         }
-        internal AbstractOrder CloseOrder(AbstractOrder order)
+        public AbstractOrder CloseOrder(AbstractOrder order)
         {
             var token = SecurityStrategy();
             return Aerial.CloseOrder(order, token);
         }
-        internal AbstractOrder OrderStatus(AbstractOrder order)
+        public AbstractOrder OrderStatus(AbstractOrder order)
         {
             var token = SecurityStrategy();
             return Aerial.OrderStatus(order, token);
         }
-        internal void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
         {
             aerial.ChangeExpertAdvisorStateType(state);
         }

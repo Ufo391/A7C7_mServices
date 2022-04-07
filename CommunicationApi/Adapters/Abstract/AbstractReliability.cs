@@ -42,12 +42,12 @@ namespace CommunicationApi.Adapters.Abstract
         }
 
         // Methods
-        internal void AddEventHandlerOnTick(Action<AbstractTick> meth)
+        public void AddEventHandlerOnTick(Action<AbstractTick> meth)
         {
             OnTick += meth;
         }
 
-        internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
+        public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -61,7 +61,7 @@ namespace CommunicationApi.Adapters.Abstract
             }
         }
 
-        internal AbstractOrder CloseOrder(AbstractOrder order)
+        public AbstractOrder CloseOrder(AbstractOrder order)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -73,7 +73,7 @@ namespace CommunicationApi.Adapters.Abstract
             }
         }
 
-        internal AbstractOrder OrderStatus(AbstractOrder order)
+        public AbstractOrder OrderStatus(AbstractOrder order)
         {
             if (ReliabilityStrategy() == true)
             {
@@ -85,7 +85,7 @@ namespace CommunicationApi.Adapters.Abstract
             }
         }
 
-        internal void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
         {
             security.ChangeExpertAdvisorStateType(state);
         }

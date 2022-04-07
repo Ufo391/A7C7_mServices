@@ -19,10 +19,10 @@ namespace CommunicationApi.Adapters.Abstract
         }
 
         // Abstract
-        abstract internal ExpertAdvisorStateType EAStatusRequest();
-        abstract internal AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token);
-        abstract internal AbstractOrder CloseOrder(AbstractOrder order, object token);
-        abstract internal AbstractOrder OrderStatus(AbstractOrder order, object token);
+        abstract public ExpertAdvisorStateType EAStatusRequest();
+        abstract public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token);
+        abstract public AbstractOrder CloseOrder(AbstractOrder order, object token);
+        abstract public AbstractOrder OrderStatus(AbstractOrder order, object token);
         abstract protected void OnStartHandler();
         abstract protected void OnStopHandler();
 
