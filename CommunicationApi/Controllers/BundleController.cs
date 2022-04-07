@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CommunicationApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("com/bundles")]
     public class BundleController : Controller
     {
         private readonly IBundleFactoryService bundleFactoryService;
@@ -30,7 +30,7 @@ namespace CommunicationApi.Controllers
                 {
                     case TestPackages.Utils.Enums.BundleTypes.MetaTrader:
                         {
-                            return Ok(bundleFactoryService.InstanceMetaTraderBundle(dto.HeadId));
+                            return Ok(bundleFactoryService.InstanceMetaTraderBundle(dto.HeadId, dto.InitialState));
                         }
                     default:
                         {

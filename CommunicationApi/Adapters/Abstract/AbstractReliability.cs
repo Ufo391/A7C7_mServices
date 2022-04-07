@@ -1,13 +1,14 @@
 ﻿using CommunicationApi.Exceptions;
 using TestPackages.Bookkeepings;
 using TestPackages.Utils.Charts;
+using TestPackages.Utils.Enums;
 using static TestPackages.Bookkeepings.AbstractOrder;
 
 namespace CommunicationApi.Adapters.Abstract
 {
     public abstract class AbstractReliability
     {
-        // Attribute              
+        // Attributes              
         protected Action<AbstractTick> OnTick = delegate { };        
         private AbstractSecurity security; 
         public AbstractSecurity Security
@@ -30,17 +31,17 @@ namespace CommunicationApi.Adapters.Abstract
             }
         }
 
-        // Abstrakt
+        // Abstract
         abstract protected bool ReliabilityStrategy(); // StrategyPattern
         abstract protected AbstractTick StringTickToDerivateConversion(string tick);
         
-        // Hilfsmethoden
+        // Helping methods
         private void OnTickHandler(string tick)
         {
             OnTick(StringTickToDerivateConversion(tick));
         }
 
-        // Methoden
+        // Methods
         internal void AddEventHandlerOnTick(Action<AbstractTick> meth)
         {
             OnTick += meth;
@@ -82,6 +83,11 @@ namespace CommunicationApi.Adapters.Abstract
             {
                 throw new ReliabilityException(ReliabilityException.ERROR_CODE.EXECUTING_FAILED);
             }
+        }
+
+        internal void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        {
+            security.ChangeExpertAdvisorStateType(state);
         }
 
         public override bool Equals(object? obj)

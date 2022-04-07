@@ -30,7 +30,7 @@ namespace CommunicationApi.Services
         public IEnumerable<string> GetAllRunningBundlesAsString()
         {
             foreach (var bundle in Bundles)
-                yield return bundle.ToString();
+                yield return bundle.Value.ToString();
         }
 
         /// <inheritdoc/>
@@ -40,12 +40,12 @@ namespace CommunicationApi.Services
         }
 
         /// <inheritdoc/>
-        public Guid InstanceMetaTraderBundle(Guid headId)
+        public Guid InstanceMetaTraderBundle(Guid headId, ExpertAdvisorStateType initState )
         {
             var aerial = new Ae_MetaTrader();
             var security = new Se_MetaTrader();
             var reliability = new Re_MetaTrader();
-            var bundle = new Bundle(BundleTypes.MetaTrader, headId, aerial, security, reliability);
+            var bundle = new Bundle(BundleTypes.MetaTrader, headId, initState, aerial, security, reliability);
             Bundles[bundle.Id] = bundle;
             return bundle.Id;
         }

@@ -1,5 +1,6 @@
 ﻿using CommunicationApi.Exceptions;
 using TestPackages.Bookkeepings;
+using TestPackages.Utils.Enums;
 using static TestPackages.Bookkeepings.AbstractOrder;
 
 namespace CommunicationApi.Adapters.Abstract
@@ -33,7 +34,7 @@ namespace CommunicationApi.Adapters.Abstract
         abstract protected bool Validate(HttpContext httpContext);
         abstract protected object SecurityStrategy();       
 
-        // Hilfsmethoden
+        // Helping methods
         private void OnTickHandler(string tick, HttpContext httpContext)
         {
             if(Validate(httpContext) == true)
@@ -64,7 +65,10 @@ namespace CommunicationApi.Adapters.Abstract
             var token = SecurityStrategy();
             return Aerial.OrderStatus(order, token);
         }
-
+        internal void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        {
+            aerial.ChangeExpertAdvisorStateType(state);
+        }
         public override bool Equals(object? obj)
         {
             return obj is AbstractSecurity security &&

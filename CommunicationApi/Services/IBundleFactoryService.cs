@@ -1,4 +1,5 @@
 ﻿using CommunicationApi.Adapters;
+using TestPackages.Utils.Enums;
 
 namespace CommunicationApi.Services
 {
@@ -11,7 +12,7 @@ namespace CommunicationApi.Services
         /// </summary>
         /// <param name="headId"></param>
         /// <returns></returns>
-        public Guid InstanceMetaTraderBundle(Guid headId);
+        public Guid InstanceMetaTraderBundle(Guid headId, ExpertAdvisorStateType initState);
 
         /// <summary>
         /// Returns all running instances of bundles.

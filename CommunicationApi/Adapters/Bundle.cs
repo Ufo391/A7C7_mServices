@@ -5,14 +5,17 @@ namespace CommunicationApi.Adapters
 {
     public class Bundle
     {
+        // Attributes
         public Guid Id { get; init; }
         public Guid HeadId { get; init; }
         private readonly BundleTypes Type;
         private readonly AbstractAerial Aerial;
         private readonly AbstractSecurity Security;
         private readonly AbstractReliability Reliability;
+        private readonly ExpertAdvisorStateType State;
 
-        public Bundle(BundleTypes type, Guid headId, AbstractAerial aerial,AbstractSecurity security, AbstractReliability reliability)
+        // Constructor
+        public Bundle(BundleTypes type, Guid headId, ExpertAdvisorStateType initialState, AbstractAerial aerial,AbstractSecurity security, AbstractReliability reliability)
         {
             reliability.Security = security;
             security.Aerial = aerial;
@@ -22,11 +25,17 @@ namespace CommunicationApi.Adapters
             Security = security;
             Reliability = reliability;
             Id = Guid.NewGuid();
+            State = initialState;
         }
 
+
+        // Methods
+
+
+        // Helping functions
         public override string ToString()
         {
-            return $"Id: {Id}, HeadId: {HeadId}, Type: {Enum.GetName(typeof(BundleTypes), Type)}";
+            return $"Id: {Id}, HeadId: {HeadId}, Type: {Enum.GetName(typeof(BundleTypes), Type)}, State: {Enum.GetName(typeof(ExpertAdvisorStateType), State)}";
         }
 
         public override bool Equals(object? obj)

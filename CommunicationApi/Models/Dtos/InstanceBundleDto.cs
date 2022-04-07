@@ -6,5 +6,6 @@ namespace CommunicationApi.Models.Dtos
     {
         public Guid HeadId { get; set; }
         public BundleTypes BundleType { get; set; }
+        public ExpertAdvisorStateType InitialState { get; set; }
     }
 }

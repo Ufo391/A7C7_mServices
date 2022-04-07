@@ -8,7 +8,17 @@ namespace CommunicationApi.Adapters.Implementation.Aerial
     public class Ae_MetaTrader : AbstractAerial
     {
         // Konstruktor
-        public Ae_MetaTrader() { }
+        public Ae_MetaTrader():base() { }
+
+        protected override void OnStartHandler()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void OnStopHandler()
+        {
+            throw new NotImplementedException();
+        }
 
         internal override AbstractOrder CloseOrder(AbstractOrder order, object token)
         {
