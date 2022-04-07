@@ -1,6 +1,6 @@
 ﻿using CommunicationApi.Exceptions;
 using TestPackages.Bookkeepings;
-using TestPackages.Utils.Charts;
+using TestPackages.Utils.Charts.Ticks;
 using TestPackages.Utils.Enums;
 using static TestPackages.Bookkeepings.AbstractOrder;
 

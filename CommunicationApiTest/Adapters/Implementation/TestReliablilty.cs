@@ -1,5 +1,5 @@
 ﻿using CommunicationApi.Adapters.Abstract;
-using TestPackages.Utils.Charts;
+using TestPackages.Utils.Charts.Ticks;
 
 namespace CommunicationApiTest.Adapters.Implementation
 {
@@ -14,7 +14,7 @@ namespace CommunicationApiTest.Adapters.Implementation
 
         protected override AbstractTick StringTickToDerivateConversion(string tick)
         {
-            return new ForexTick();
+            return new MetaTraderForexTick(tick);
         }
     }
 }
