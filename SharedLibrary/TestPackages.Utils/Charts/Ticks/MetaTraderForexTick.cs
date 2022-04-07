@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
-namespace TestPackages.Utils.Charts
+namespace TestPackages.Utils.Charts.Ticks
 {
-    public abstract class AbstractTick
+    public class MetaTraderForexTick : AbstractTick
     {
-        // Attributes
+        // Enums
         private enum ENUM_OBJ_INDEX
         {
             NULL, // Beim Matchobjekt ist der erste Eintrag immer der gesamte Match -> deshalb Platzhalter
@@ -32,7 +35,13 @@ namespace TestPackages.Utils.Charts
             MARGIN_CALL,
             MARGIN_STOP_OUT
         }
+        private enum ENUM_METATRADER_TICK_FLAG
+        {
+            BID = 1, ASK = 2, LAST = 3, VOLUME = 4, BUY = 5, SELL = 6
+        }
 
+        // Attributes
+        private static readonly string RegexFastProtocolTickDate = @"(\d+)\.(\d+)\.(\d+)\|(\d+):(\d+):(\d+)";
         private static Dictionary<ENUM_METATRADER_TICK_FLAG, string> MapTickFlags = new Dictionary<ENUM_METATRADER_TICK_FLAG, string>()
         {
             {ENUM_METATRADER_TICK_FLAG.ASK, "Ask" },
@@ -43,65 +52,31 @@ namespace TestPackages.Utils.Charts
             {ENUM_METATRADER_TICK_FLAG.VOLUME, "Volume" }
         };
 
-        private enum ENUM_METATRADER_TICK_FLAG
+        // Constructor
+        public MetaTraderForexTick(string tick) : base(tick)
         {
-            BID = 1, ASK = 2, LAST = 3, VOLUME = 4, BUY = 5, SELL = 6
         }
 
-        private static readonly string RegexFastProtocolTickDate = @"(\d+)\.(\d+)\.(\d+)\|(\d+):(\d+):(\d+)";
-
-        private Match Data;
-        public DateTime TimeStamp { get; private set; }
-
-        // Konstruktor
-        public AbstractTick(string tick)
+        public override Regex GetTickValidationRegex()
         {
-            TimeStamp = DateTime.Now;
-            Data = ValidateTick(tick, GetTickValidationRegex());
-            EAId = Guid.Parse(Data.Groups[(int)ENUM_OBJ_INDEX.GUID].Value);
+            throw new NotImplementedException();
         }
 
-        // Methoden        
-        public override bool Equals(object obj)
+        public override Match ValidateTick(string tick, Regex regex)
         {
-            if (obj is AbstractTick == false)
-            {
-                return false;
-            }
-
-            var instance = (AbstractTick)obj;
-            return instance.TimeStamp.Equals(TimeStamp) && instance.GetDataHashCode() == GetDataHashCode();
+            throw new NotImplementedException();
         }
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                int result = 1265;
-                result *= Data.GetHashCode() + 12354;
-                result *= TimeStamp.GetHashCode() + 12354;
-                return result;
-            }
-        }
-
-        private Guid _EAId;
-        public Guid EAId
+        // GET
+        public override Guid HeadId
         {
             get
             {
-                return _EAId;
-            }
-            private set
-            {
-                _EAId = value;
+                return Guid.Parse(Data.Groups[(int)ENUM_OBJ_INDEX.GUID].Value);
             }
         }
 
-        public abstract Regex GetTickValidationRegex();
-        public abstract Match ValidateTick(string tick, Regex regex);
-
-        // GET
-        public string Symbol
+        public override string Symbol
         {
             get
             {
@@ -109,7 +84,7 @@ namespace TestPackages.Utils.Charts
             }
         }
 
-        public DateTime Date
+        public override DateTime Date
         {
             get
             {
@@ -120,7 +95,7 @@ namespace TestPackages.Utils.Charts
             }
         }
 
-        public float Bid
+        public override float Bid
         {
             get
             {
@@ -128,7 +103,7 @@ namespace TestPackages.Utils.Charts
             }
         }
 
-        public float Ask
+        public override float Ask
         {
             get
             {
@@ -254,11 +229,6 @@ namespace TestPackages.Utils.Charts
             {
                 return float.Parse(Data.Groups[(int)ENUM_OBJ_INDEX.MARGIN_STOP_OUT].Value, CultureInfo.InvariantCulture.NumberFormat);
             }
-        }
-
-        public int GetDataHashCode()
-        {
-            return Data.GetHashCode();
         }
     }
 }
