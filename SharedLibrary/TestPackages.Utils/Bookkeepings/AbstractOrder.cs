@@ -28,6 +28,11 @@ namespace TestPackages.Bookkeepings
             InternalId = Guid.NewGuid();
         }
 
+        public AbstractOrder()
+        {
+
+        }
+
         // Attributes
         public string ExternId { get; private set; } // Z.B. ID von MetaTrader
         public Guid InternalId { get; private set; }
