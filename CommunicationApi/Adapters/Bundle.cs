@@ -1,5 +1,7 @@
 ﻿using CommunicationApi.Adapters.Abstract;
+using TestPackages.Bookkeepings;
 using TestPackages.Utils.Enums;
+using static TestPackages.Bookkeepings.AbstractOrder;
 
 namespace CommunicationApi.Adapters
 {
@@ -26,6 +28,27 @@ namespace CommunicationApi.Adapters
             Reliability = reliability;
             Id = Guid.NewGuid();
             State = initialState;
+        }
+
+        // Functions & methods
+        public AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice)
+        {
+            return Reliability.OpenOrder(direction, volume, openPrice);
+        }
+
+        public AbstractOrder CloseOrder(AbstractOrder order)
+        {
+            return Reliability.CloseOrder(order);
+        }
+
+        public AbstractOrder OrderStatus(AbstractOrder order)
+        {
+            return Reliability.OrderStatus(order);
+        }
+
+        public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        {
+            Reliability.ChangeExpertAdvisorStateType((ExpertAdvisorStateType)state);
         }
 
         // Helping functions
