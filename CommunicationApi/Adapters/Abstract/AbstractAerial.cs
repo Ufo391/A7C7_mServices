@@ -10,6 +10,7 @@ namespace CommunicationApi.Adapters.Abstract
         protected Action<string, HttpContext> OnTick = delegate { };
         protected Action OnStop = delegate { };
         protected Action OnStart = delegate { };
+        protected ExpertAdvisorStateType State { get; private set; }
 
         // Constructor
         public AbstractAerial()
@@ -27,10 +28,12 @@ namespace CommunicationApi.Adapters.Abstract
         abstract protected void OnStopHandler();
 
         // Helping methods
-        internal void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
+        public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
         {
-            if(state == ExpertAdvisorStateType.Running)
-            {
+            State = state;
+
+            if (state == ExpertAdvisorStateType.Running)
+            {                
                 OnStart();
             }
             else if(state == ExpertAdvisorStateType.Initializing || state == ExpertAdvisorStateType.EmergencyStop || state == ExpertAdvisorStateType.Paused)
@@ -40,7 +43,7 @@ namespace CommunicationApi.Adapters.Abstract
             else
             {
                 throw new NotImplementedException($"Unknown expert advisor state handler! State: {Enum.GetName(typeof(ExpertAdvisorStateType), state)}");
-            }
+            }            
         }
 
         internal void AddEventHandlerOnTick(Action<string, HttpContext> meth)
