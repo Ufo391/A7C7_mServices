@@ -20,22 +20,22 @@ namespace CommunicationApi.Adapters.Implementation.Aerial
             throw new NotImplementedException();
         }
 
-        internal override AbstractOrder CloseOrder(AbstractOrder order, object token)
+        public override AbstractOrder CloseOrder(AbstractOrder order, object token)
         {
             throw new NotImplementedException();
         }
 
-        internal override ExpertAdvisorStateType EAStatusRequest()
+        public override ExpertAdvisorStateType EAStatusRequest()
         {
             throw new NotImplementedException();
         }
 
-        internal override AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token)
+        public override AbstractOrder OpenOrder(DirectionType direction, double volume, double openPrice, object token)
         {
             throw new NotImplementedException();
         }
 
-        internal override AbstractOrder OrderStatus(AbstractOrder order, object token)
+        public override AbstractOrder OrderStatus(AbstractOrder order, object token)
         {
             throw new NotImplementedException();
         }
