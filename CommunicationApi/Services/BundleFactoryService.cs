@@ -9,43 +9,48 @@ namespace CommunicationApi.Services
     public class BundleFactoryService : IBundleFactoryService
     {
         private Dictionary<Guid, Bundle> bundles;
-        public Dictionary<Guid, Bundle> Bundles
+
+        public BundleFactoryService()
         {
-            get
-            {
-                if (bundles == null)
-                    bundles = new Dictionary<Guid, Bundle>();
-                return bundles;
-            }
+            bundles = new Dictionary<Guid, Bundle>();
         }
 
         /// <inheritdoc/>
         public void ChangeBundleState(Guid bundleId, ExpertAdvisorStateType state)
         {
-            Bundles[bundleId].State = state;
+            bundles[bundleId].State = state;
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Bundle> GetAllRunningBundles()
+        public IEnumerable<Bundle> GetAllInstancedBundles()
         {
-            foreach (var bundle in Bundles)
-                yield return bundle.Value;
+            return bundles.Values.ToList();
         }
 
         /// <inheritdoc/>
-        public Bundle GetBundle(Guid bundleId)
+        public Bundle? GetBundle(Guid bundleId)
         {
+            if(bundles.ContainsKey(bundleId) == false)
+            {
+                return null;
+            }
+
             return bundles[bundleId];
         }
 
         /// <inheritdoc/>
         public Guid InstanceMetaTraderBundle(Guid headId, ExpertAdvisorStateType initState )
         {
+            if(bundles is null)
+            {
+                bundles = new Dictionary<Guid, Bundle>();
+            }
+
             var aerial = new Ae_MetaTrader();
             var security = new Se_MetaTrader();
             var reliability = new Re_MetaTrader();
             var bundle = new Bundle(BundleTypes.MetaTrader, headId, initState, aerial, security, reliability);
-            Bundles[bundle.Id] = bundle;
+            bundles[bundle.Id] = bundle;
             return bundle.Id;
         }
     }

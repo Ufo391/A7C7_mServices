@@ -20,7 +20,7 @@ namespace CommunicationApi.Controllers
         {
             try
             {
-                return Ok(bundleFactoryService.GetAllRunningBundles().Select(x => x.ToString()));
+                return Ok(bundleFactoryService.GetAllInstancedBundles().Select(x => x.ToString()));
             }
             catch (Exception ex)
             {

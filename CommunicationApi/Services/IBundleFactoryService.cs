@@ -5,8 +5,6 @@ namespace CommunicationApi.Services
 {
     public interface IBundleFactoryService
     {
-        public Dictionary<Guid, Bundle> Bundles { get; }
-
         /// <summary>
         /// Instantiates a MetaTrader instance.
         /// <returns></returns>
@@ -16,14 +14,14 @@ namespace CommunicationApi.Services
         /// Returns all running instances of bundles.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Bundle> GetAllRunningBundles();
+        public IEnumerable<Bundle> GetAllInstancedBundles();
 
         /// <summary>
         /// Get Bundle by Id.
         /// </summary>
         /// <param name="bundleId"></param>
         /// <returns></returns>
-        public Bundle GetBundle(Guid bundleId);
+        public Bundle? GetBundle(Guid bundleId);
 
         /// <summary>
         /// Changes the state of a bundle.

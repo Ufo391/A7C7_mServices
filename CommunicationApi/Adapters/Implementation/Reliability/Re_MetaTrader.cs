@@ -1,5 +1,5 @@
 ﻿using CommunicationApi.Adapters.Abstract;
-using TestPackages.Utils.Charts;
+using TestPackages.Utils.Charts.Ticks;
 
 namespace CommunicationApi.Adapters.Implementation.Reliability
 {
