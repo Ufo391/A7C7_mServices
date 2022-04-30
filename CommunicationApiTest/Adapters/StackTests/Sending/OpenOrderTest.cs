@@ -26,10 +26,11 @@ namespace CommunicationApiTest.Adapters.StackTests.Sending
 
             // Act
             reliability.ReliabilityStrategyReturn = true;
-            bundle.OpenOrder(DirectionType.BEARISCH, 1f, 1.2f);
+            var order = bundle.OpenOrder(DirectionType.BEARISCH, 1f, 1.2f);
 
             // Assert
             Assert.True(aerial.IsOrderOpenedRequested);
+            Assert.Equal(ORDER_STATUS.OPEN, order.Status);
         }
     }
 }

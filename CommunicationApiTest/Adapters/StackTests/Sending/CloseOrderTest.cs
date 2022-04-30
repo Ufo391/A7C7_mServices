@@ -32,6 +32,7 @@ namespace CommunicationApiTest.Adapters.StackTests.Sending
 
             // Assert
             Assert.True(aerial.IsOrderClosedRequested);
+            Assert.Equal(AbstractOrder.ORDER_STATUS.CLOSED, order.Status);
         }
     }
 }
