@@ -1,4 +1,5 @@
 ﻿using Communication.FastProtocol.Read;
+using CoreApi.Model;
 using ExpertAdvisors.Abstract;
 using ExpertAdvisors.Abstract.Strategy;
 using ExpertAdvisors.Model.Broker;
@@ -15,10 +16,6 @@ namespace ExpertAdvisors
     {
         // Attribute
         public Guid Id { get; private set; }
-        public AbstractStrategyPlugin Strategy { get; private set; }
-        public AbstractReliability Reliability { get; private set; }
-        public AbstractSecurity Security { get; private set; }
-        public AbstractAerial ReceiveTransmit { get; private set; }
 
         public BrokerAccount Broker { get; private set; }
         public Pair Pair { get; private set; } // Traded Pair
@@ -27,12 +24,8 @@ namespace ExpertAdvisors
         private AccountProfitConverter AccountProfitConverter;
 
         // Konstruktor
-        public Head(AbstractStrategyPlugin strategy, AbstractReliability reliability, AbstractSecurity security, AbstractAerial receiveTransmit, BrokerAccount broker, AccountProfitConverter apConverter, Pair pair)
+        public Head(SessionModel sessionModel, BrokerAccount broker, Pair pair)
         {
-            Strategy = strategy;
-            Reliability = reliability;
-            Security = security;
-            ReceiveTransmit = receiveTransmit;
             Id = Guid.NewGuid();
             Broker = broker;
             Pair = pair;

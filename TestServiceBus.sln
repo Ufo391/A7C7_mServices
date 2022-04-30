@@ -48,7 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StrategyApi", "StrategyApi"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyApi", "StrategyApi\StrategyApi.csproj", "{95452F79-ECFA-46BD-8F96-9DBDA0CC3DBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationApiTest", "CommunicationApiTest\CommunicationApiTest.csproj", "{03E9F573-639A-407D-B89B-9B1020828DDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationApiTest", "CommunicationApiTest\CommunicationApiTest.csproj", "{03E9F573-639A-407D-B89B-9B1020828DDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

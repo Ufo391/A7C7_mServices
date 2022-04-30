@@ -1,1 +1,9 @@
-Aerial weiter --> Tick(Abstract machen mit Ableitung für MetaTrader) in SharedLibrary anpassen
+CoreApi:
+	EF einbetten
+		wie in TestUserService Projekt
+		Eig. fehlt nur noch die verheiratung in programm.cs
+	Models:
+		Model für Platform erstellen
+	Abstrahieren von Head
+		AbstractHead
+	IHead ausimplementieren
