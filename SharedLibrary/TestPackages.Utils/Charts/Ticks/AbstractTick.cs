@@ -22,7 +22,7 @@ namespace TestPackages.Utils.Charts.Ticks
         public abstract Regex GetTickValidationRegex();
         public abstract Match ValidateTick(string tick, Regex regex);
 
-        public abstract Guid HeadId
+        public abstract Guid TraderHeadId
         {
             get;
         }

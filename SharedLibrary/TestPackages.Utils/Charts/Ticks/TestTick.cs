@@ -22,7 +22,7 @@ namespace TestPackages.Utils.Charts.Ticks
         }
 
         // Methods
-        public override Guid HeadId => DebugHeadId;
+        public override Guid TraderHeadId => DebugHeadId;
 
         public override string Symbol => DebugSymbol;
 

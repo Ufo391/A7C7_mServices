@@ -22,4 +22,8 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SharedLibrary\TestPackages.Utils\TestPackages.Utils.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -68,7 +68,7 @@ namespace TestPackages.Utils.Charts.Ticks
         }
 
         // GET
-        public override Guid HeadId
+        public override Guid TraderHeadId
         {
             get
             {
