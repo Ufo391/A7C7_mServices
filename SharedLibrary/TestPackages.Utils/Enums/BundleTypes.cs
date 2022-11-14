@@ -2,6 +2,6 @@
 {
     public enum BundleTypes
     {
-        MetaTrader
+        XUnit, MetaTrader
     }
 }

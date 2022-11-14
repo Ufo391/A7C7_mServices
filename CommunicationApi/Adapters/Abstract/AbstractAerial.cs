@@ -26,6 +26,7 @@ namespace CommunicationApi.Adapters.Abstract
         abstract public AbstractOrder OrderStatus(AbstractOrder order, object token);
         abstract protected void OnStartHandler();
         abstract protected void OnStopHandler();
+        abstract protected void ReceiveTickHandler(string tick);
 
         // Helping methods
         public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)
@@ -44,6 +45,12 @@ namespace CommunicationApi.Adapters.Abstract
             {
                 throw new NotImplementedException($"Unknown expert advisor state handler! State: {Enum.GetName(typeof(ExpertAdvisorStateType), state)}");
             }            
+        }
+
+        public void ReceiveTick(string tick,HttpContext context)
+        {
+            ReceiveTickHandler(tick);
+            OnTick(tick, context);
         }
 
         internal void AddEventHandlerOnTick(Action<string, HttpContext> meth)

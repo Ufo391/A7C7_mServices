@@ -1,5 +1,6 @@
 ﻿using CommunicationApi.Adapters.Abstract;
 using TestPackages.Bookkeepings;
+using TestPackages.Utils.Charts.Ticks;
 using TestPackages.Utils.Enums;
 using static TestPackages.Bookkeepings.AbstractOrder;
 
@@ -44,6 +45,11 @@ namespace CommunicationApi.Adapters
         public AbstractOrder OrderStatus(AbstractOrder order)
         {
             return Reliability.OrderStatus(order);
+        }
+
+        public void AddEventHandlerOnTick(Action<AbstractTick> meth)
+        {
+            Reliability.AddEventHandlerOnTick(meth);
         }
 
         public void ChangeExpertAdvisorStateType(ExpertAdvisorStateType state)

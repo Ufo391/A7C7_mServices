@@ -53,5 +53,10 @@ namespace CommunicationApiTest.Adapters.Implementation
             IsOrderStatusRequested = true;
             return order;
         }
+
+        protected override void ReceiveTickHandler(string tick)
+        {
+            return;
+        }
     }
 }

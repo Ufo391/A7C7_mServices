@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace TestPackages.Utils.Charts.Ticks
 {
@@ -10,11 +7,13 @@ namespace TestPackages.Utils.Charts.Ticks
         // Attributes
         protected Match Data;
         public DateTime TimeStamp { get; private set; }
+        public string TickRaw { get; private set; }
 
         // Constructor
         public AbstractTick(string tick)
         {
             TimeStamp = DateTime.Now;
+            TickRaw = tick;
             Data = ValidateTick(tick, GetTickValidationRegex());
         }
 

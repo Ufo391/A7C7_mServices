@@ -14,7 +14,7 @@ namespace CommunicationApiTest.Adapters.Implementation
 
         protected override AbstractTick StringTickToDerivateConversion(string tick)
         {
-            return new MetaTraderForexTick(tick);
+            return new TestTick(tick);
         }
     }
 }

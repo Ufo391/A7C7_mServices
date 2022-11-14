@@ -26,8 +26,4 @@
     <ProjectReference Include="..\SharedLibrary\TestPackages.Utils\TestPackages.Utils.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Adapters\StackTests\Receive\" />
-  </ItemGroup>
-
 </Project>

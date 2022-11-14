@@ -39,5 +39,10 @@ namespace CommunicationApi.Adapters.Implementation.Aerial
         {
             throw new NotImplementedException();
         }
+
+        protected override void ReceiveTickHandler(string tick)
+        {
+            return;
+        }
     }
 }
