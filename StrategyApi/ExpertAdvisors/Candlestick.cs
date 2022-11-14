@@ -1,5 +1,5 @@
-﻿using Communication.FastProtocol.Read;
-using System;
+﻿using System;
+using TestPackages.Utils.Charts.Ticks;
 
 namespace ExpertAdvisors
 {
@@ -21,9 +21,9 @@ namespace ExpertAdvisors
         public DateTime OpenDate { get; set; }
         public DateTime CloseDate { get; private set; }
         public bool IsReadOnly { get; private set; }
-        public Tick LastTick { get; private set; }
+        public AbstractTick LastTick { get; private set; }
 
-        private Action<Candlestick, Tick> OnCandleClosed = delegate { };
+        private Action<Candlestick, AbstractTick> OnCandleClosed = delegate { };
 
         // Kosntruktor
         public Candlestick(ulong intervall)
@@ -35,12 +35,12 @@ namespace ExpertAdvisors
         }
 
         // Hilfsmethoden
-        public void AddOnCandleClosedHandler(Action<Candlestick, Tick> meth)
+        public void AddOnCandleClosedHandler(Action<Candlestick, AbstractTick> meth)
         {
             OnCandleClosed += meth;
         }
 
-        public void OnTickHandler(AbstractReader aReader)
+        public void OnTickHandler()
         {
             return; // Erstmal deaktiviert MUSS ÜBERARBEITET WERDEN siehe TODOS
             /*
@@ -68,12 +68,12 @@ namespace ExpertAdvisors
             LastTick = tick;*/
         }
 
-        private bool IsIntervallOver(Tick tick)
+        private bool IsIntervallOver(AbstractTick tick)
         {
             return tick.Date.Subtract(OpenDate).TotalMilliseconds >= Intervall;
         }
 
-        private void CloseCandle(Tick ignoredTick)
+        private void CloseCandle(AbstractTick ignoredTick)
         {
             CloseAsk = LastTick.Ask;
             CloseBid = LastTick.Bid;
@@ -83,7 +83,7 @@ namespace ExpertAdvisors
             OnCandleClosed(this, ignoredTick);
         }
 
-        private void OpenCandle(Tick tick)
+        private void OpenCandle(AbstractTick tick)
         {
             OpenAsk = tick.Ask;
             OpenBid = tick.Bid;
@@ -94,7 +94,7 @@ namespace ExpertAdvisors
             LowBid = float.MaxValue;
         }
 
-        private void SetLowest(Tick tick)
+        private void SetLowest(AbstractTick tick)
         {
             if (LowAsk > tick.Ask)
             {
@@ -107,7 +107,7 @@ namespace ExpertAdvisors
             }
         }
 
-        private void SetHeighest(Tick tick)
+        private void SetHeighest(AbstractTick tick)
         {
             if (HighAsk < tick.Ask)
             {

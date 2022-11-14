@@ -50,6 +50,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyApi", "StrategyApi\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationApiTest", "CommunicationApiTest\CommunicationApiTest.csproj", "{03E9F573-639A-407D-B89B-9B1020828DDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBroker", "MessageBroker\MessageBroker.csproj", "{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -112,6 +114,10 @@ Global
 		{03E9F573-639A-407D-B89B-9B1020828DDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E9F573-639A-407D-B89B-9B1020828DDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E9F573-639A-407D-B89B-9B1020828DDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -131,6 +137,7 @@ Global
 		{65B5FC83-28B4-4D21-9C92-CECCA7960B95} = {63C40DCD-B9EC-475B-AC1F-A0B685E27B2A}
 		{95452F79-ECFA-46BD-8F96-9DBDA0CC3DBD} = {D929B36D-2597-475D-878A-C201E3325066}
 		{03E9F573-639A-407D-B89B-9B1020828DDC} = {6B6BC1A8-6323-46F9-8D20-35814B19BA6E}
+		{F2ECDB79-BF64-4D8D-8295-8CB44AD7098E} = {6B6BC1A8-6323-46F9-8D20-35814B19BA6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7B17D50A-D117-4AFB-AD82-5C64993289FC}

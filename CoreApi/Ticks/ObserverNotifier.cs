@@ -1,4 +1,5 @@
-﻿using CoreApi.ExpertAdvisors;
+﻿using CommunicationApi.Adapters;
+using CoreApi.ExpertAdvisors;
 using TestPackages.Utils.Charts.Ticks;
 
 namespace CoreApi.Ticks
@@ -22,7 +23,7 @@ namespace CoreApi.Ticks
 
         public ObserverNotifier()
         {
-            Traders = new Dictionary<Guid, AbstractHead>();
+            Traders = new Dictionary<Guid, AbstractTrader>();
         }
 
         public void ComTickHandler(AbstractTick tick)
